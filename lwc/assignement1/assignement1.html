@@ -1,0 +1,31 @@
+<template>
+
+    <div class='slds-grid'>
+        <div class='slds-col'>
+            <lightning-input name="Name" label="Account Name" onchange={handleInput}></lightning-input>
+            <lightning-input name="RecordNumber" label="Record Number" onchange={handleInput}></lightning-input>
+            <br />
+            <lightning-button label="Search Accounts" name="search" onclick={handleSearchOperation}></lightning-button>
+        </div>
+
+        <div class='slds-col'>
+             <div>
+                 <lightning-input name='SearchFilterText' label='Filter Data' onchange={handleInput}></lightning-input>
+                <lightning-button name='FilterData' label='Filter Data' onclick={handleDataFilterOperation}></lightning-button> 
+                </div>
+
+            <template if:true={copiedaccounts}>
+                <template for:each={copiedaccounts} for:item='account'>
+                    <c-assignement-child account={account} key={account.Id}></c-assignement-child>
+                    
+                </template>
+            </template>
+            <template if:true={error}>
+                <p> {error}</p>
+            </template>
+        </div>
+
+    </div>
+
+
+</template>
